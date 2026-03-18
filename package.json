@@ -1,0 +1,13 @@
+{
+  "name": "it-spend-slack-bot",
+  "version": "1.0.0",
+  "description": "Posts weekly GCP + Claude usage spend to Slack #it-team",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
