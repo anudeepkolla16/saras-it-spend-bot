@@ -1,1 +1,25 @@
+name: Weekly IT Spend Report
 
+on:
+  schedule:
+    - cron: '30 3 * * 1'   # Every Monday 9:00 AM IST (= 3:30 AM UTC)
+  workflow_dispatch:         # Allows manual trigger from GitHub UI
+
+jobs:
+  post-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run IT Spend Bot
+        run: node index.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          GCP_CURRENT_SPEND: ${{ secrets.GCP_CURRENT_SPEND }}
+          GCP_MONTHLY_BUDGET: ${{ secrets.GCP_MONTHLY_BUDGET }}
