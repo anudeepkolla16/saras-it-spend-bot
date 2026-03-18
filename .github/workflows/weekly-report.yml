@@ -1,9 +1,9 @@
 name: Weekly IT Spend Report
 
-on:
+"on":
   schedule:
-    - cron: '30 3 * * 1'   # Every Monday 9:00 AM IST (= 3:30 AM UTC)
-  workflow_dispatch:         # Allows manual trigger from GitHub UI
+    - cron: '30 3 * * 1'
+  workflow_dispatch:
 
 jobs:
   post-report:
